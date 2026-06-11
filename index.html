@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -48,7 +48,7 @@ body::before{
   opacity:.3;
 }
 
-/* cyan glow top-right, like a signal beacon */
+/* cyan glow top-right */
 .glow-tr{
   position:fixed;top:-160px;right:-120px;width:500px;height:500px;
   background:radial-gradient(circle,rgba(0,212,255,.07),transparent 65%);
@@ -144,9 +144,7 @@ section{padding:72px 0;border-top:1px solid var(--border)}
 
 /* ---------- project grid ---------- */
 .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:780px){.grid-2,.grid-3{grid-template-columns:1fr}}
-@media(min-width:781px) and (max-width:1040px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:780px){.grid-2{grid-template-columns:1fr}}
 
 .card{
   background:var(--panel);border:1px solid var(--border);border-radius:6px;
@@ -184,17 +182,6 @@ section{padding:72px 0;border-top:1px solid var(--border)}
 .card.feat h3{font-size:20px}
 .card.feat::after{opacity:.5}
 
-/* ---------- skills ---------- */
-.sk-grid{display:grid;grid-template-columns:160px 1fr;gap:8px 24px}
-@media(max-width:640px){.sk-grid{grid-template-columns:1fr;gap:4px}}
-.sk-key{font-family:var(--mono);font-size:12px;color:var(--cyan);padding-top:10px}
-.sk-val{
-  display:flex;flex-wrap:wrap;gap:7px;
-  padding:8px 0;border-bottom:1px dashed var(--border);
-}
-.sk-val span{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
-.sk-val span:not(:last-child)::after{content:"·";color:var(--dim);margin-left:7px}
-
 /* ---------- timeline ---------- */
 .tl{padding-left:22px;position:relative}
 .tl::before{content:"";position:absolute;left:3px;top:8px;bottom:8px;width:1px;background:var(--border)}
@@ -211,45 +198,14 @@ section{padding:72px 0;border-top:1px solid var(--border)}
 .tl-item li{font-size:14px;color:var(--muted);padding-left:16px;position:relative;margin-bottom:5px;line-height:1.55}
 .tl-item li::before{content:"›";position:absolute;left:0;color:var(--cyan);font-size:15px;line-height:1.4}
 
-/* ---------- focus areas ---------- */
-.focus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:760px){.focus-grid{grid-template-columns:1fr}}
-.focus-card{
-  border:1px solid var(--border);border-radius:6px;padding:20px;
-  background:var(--bg2);
-  transition:border-color .2s;
-}
-.focus-card:hover{border-color:var(--border2)}
-.focus-icon{
-  font-family:var(--mono);font-size:22px;color:var(--cyan);
-  margin-bottom:12px;display:block;
-}
-.focus-card h4{font-family:var(--display);font-size:15px;font-weight:600;margin-bottom:6px}
-.focus-card p{font-size:13.5px;color:var(--muted);line-height:1.55}
-
-/* ---------- stat bar ---------- */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:40px}
-@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{background:var(--panel);padding:18px 20px}
-.stat .n{font-family:var(--display);font-size:26px;font-weight:700;color:var(--cyan);letter-spacing:-.02em}
-.stat .l{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.04em;margin-top:3px}
-
-/* ---------- contact ---------- */
-.contact-section{text-align:center;padding:80px 0 60px}
-.contact-section h2{
-  font-family:var(--display);font-size:clamp(30px,5vw,52px);
-  font-weight:700;letter-spacing:-.03em;margin:16px 0 12px;
-}
-.contact-section h2 em{font-style:normal;color:var(--cyan)}
-.contact-section p{font-size:16px;color:var(--muted);max-width:480px;margin:0 auto 36px}
-.contact-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-footer{
-  border-top:1px solid var(--border);padding:36px 0;
-  text-align:center;
-}
-footer .links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
-footer .credit{font-family:var(--mono);font-size:11px;color:var(--dim)}
+/* ---------- footer ---------- */
+footer{padding:80px 0 40px;text-align:center;border-top:1px solid var(--border)}
+.footer-links{display:flex;justify-content:center;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+.footer-chip{padding:12px 20px;border-radius:4px;font-family:var(--mono);font-size:13px;text-decoration:none;transition:all .2s;}
+.footer-chip.email{background:#b8d1b6;color:#080c10;font-weight:600}
+.footer-chip.nav{border:1px solid var(--border2);color:var(--ink)}
+.footer-chip.nav:hover{border-color:var(--muted)}
+.footer-credit{font-family:var(--mono);font-size:11px;color:var(--dim)}
 
 /* pulse dot */
 .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cyan);margin-right:6px;animation:pulse 2s ease infinite}
@@ -267,20 +223,17 @@ footer .credit{font-family:var(--mono);font-size:11px;color:var(--dim)}
 
 <nav>
   <div class="row">
-    <div class="brand">gsf<span>.</span>dev</div>
+    <div class="brand">goncalo<span>.</span>santiago</div>
     <div class="nav-links">
       <a href="#about">about</a>
       <a href="#projects">projects</a>
-      <a href="#skills">skills</a>
       <a href="#experience">experience</a>
-      <a href="#contact">contact</a>
     </div>
   </div>
 </nav>
 
 <div class="wrap">
 
-  <!-- HERO -->
   <header>
     <div class="hero-tag" id="htag">
       Computer Engineering · MSc · Braga, PT
@@ -298,185 +251,109 @@ footer .credit{font-family:var(--mono);font-size:11px;color:var(--dim)}
       <span>MSc @ University of Minho · whynotsanty</span>
     </p>
     <div class="cta-row" id="hcta">
-      <a class="btn primary" href="#projects">Ver projectos →</a>
+      <a class="btn primary" href="#projects">View projects →</a>
       <a class="btn" href="https://github.com/whynotsanty" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/goncalosantiago" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </header>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="section-label rev"><span class="num">—</span><span class="title">About</span><span class="line"></span></div>
     <p class="about-text rev">
-      Estou a fazer o Mestrado em Engenharia Informática na UMinho com foco em
-      <span class="hl">Machine Learning</span>, Redes e IoT.
-      O que me move é transformar investigação complexa em
-      <strong>sistemas completos e funcionais</strong> — da aquisição de dados brutos
-      à inferência em produção. Tenho prazer em perceber como é que um sistema realmente funciona
-      antes de tentar melhorá-lo.
+      I am pursuing a Master's degree in Computer Engineering at UMinho with a focus on
+      <span class="hl">Machine Learning</span>, Networks, and IoT.
+      What drives me is transforming complex research into 
+      <strong>fully functional systems</strong> — from raw data acquisition 
+      to production inference. I enjoy understanding how a system truly works
+      before attempting to improve it.
     </p>
   </section>
 
-  <!-- FOCUS AREAS -->
-  <section id="focus">
-    <div class="section-label rev"><span class="num">—</span><span class="title">Research Focus</span><span class="line"></span></div>
-    <div class="focus-grid">
-      <div class="focus-card rev rev-d1">
-        <span class="focus-icon">[ML]</span>
-        <h4>Machine Learning</h4>
-        <p>PyTorch, TensorFlow, scikit-learn. End-to-end pipelines — da exploração de dados ao deployment e avaliação em produção.</p>
-      </div>
-      <div class="focus-card rev rev-d2">
-        <span class="focus-icon">[NET]</span>
-        <h4>Redes &amp; Sistemas</h4>
-        <p>Arquitecturas VNF/QoS, gestão de tráfego urbano via SNMP, comunicações V2X e co-simulação com SUMO/MOSAIC.</p>
-      </div>
-      <div class="focus-card rev rev-d3">
-        <span class="focus-icon">[IOT]</span>
-        <h4>IoT &amp; Edge</h4>
-        <p>Arduino, Raspberry Pi, MQTT. Inferência embebida, detecção de anomalias em Edge com latências e consumo energético medidos empiricamente.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
   <section id="projects">
     <div class="section-label rev"><span class="num">—</span><span class="title">Projects</span><span class="line"></span></div>
-
-    <div class="stats rev">
-      <div class="stat"><div class="n">6</div><div class="l">repos públicos</div></div>
-      <div class="stat"><div class="n">4</div><div class="l">áreas técnicas</div></div>
-      <div class="stat"><div class="n">E2E</div><div class="l">pipelines completas</div></div>
-      <div class="stat"><div class="n">PT</div><div class="l">Braga · Porto</div></div>
-    </div>
 
     <div class="grid-2">
 
       <div class="card feat rev">
         <div class="card-tag">PROJECT // 001 · ML · CRISP-DM</div>
         <h3>Traffic Flow Prediction</h3>
-        <p>Solução ML end-to-end para prever níveis de congestionamento urbano na cidade do Porto, seguindo a metodologia CRISP-DM. Alcançou performance no top 4 da competição — da exploração de dados ao modelo final com Jupyter.</p>
+        <p>End-to-end ML solution to predict urban congestion levels in Porto, following the CRISP-DM methodology. Achieved top 4 performance in the competition — from data exploration to the final model using Jupyter.</p>
         <div class="chips">
           <span class="chip">PyTorch</span><span class="chip">scikit-learn</span>
           <span class="chip">Pandas / NumPy</span><span class="chip">CRISP-DM</span>
           <span class="chip">Jupyter</span>
         </div>
-        <a class="card-link" href="https://github.com/whynotsanty/Traffic-Flow-Prediction" target="_blank" rel="noopener">ver repositório →</a>
+        <a class="card-link" href="https://github.com/whynotsanty/Traffic-Flow-Prediction" target="_blank" rel="noopener">view repository →</a>
       </div>
 
       <div class="card rev rev-d1">
-        <div class="card-tag">PROJECT // 002 · IoT · ML embebido</div>
+        <div class="card-tag">PROJECT // 002 · IoT · Edge ML</div>
         <h3>RipeRadar</h3>
-        <p>Monitor inteligente de maturação de fruta com NICLA Sense e Arduino Nano. Integra routing BLE-to-MQTT em Python, inferência de ML embebida e telemetria empírica de consumo energético.</p>
+        <p>Intelligent fruit maturation monitor using NICLA Sense and Arduino Nano. Integrates Python-based BLE-to-MQTT routing, embedded ML inference, and empirical energy consumption telemetry.</p>
         <div class="chips">
           <span class="chip">C++</span><span class="chip">Arduino</span>
           <span class="chip">BLE / MQTT</span><span class="chip">Edge ML</span>
         </div>
-        <a class="card-link" href="https://github.com/whynotsanty/RipeRadar" target="_blank" rel="noopener">ver repositório →</a>
+        <a class="card-link" href="https://github.com/whynotsanty/RipeRadar" target="_blank" rel="noopener">view repository →</a>
       </div>
 
       <div class="card rev rev-d2">
-        <div class="card-tag">PROJECT // 003 · IoT · Manutenção preditiva</div>
+        <div class="card-tag">PROJECT // 003 · IoT · Predictive Maintenance</div>
         <h3>DriftSense-PM</h3>
-        <p>Sistema adaptativo de manutenção preditiva e detecção de concept drift optimizado para Edge. Combina logging com Arduino/Raspberry Pi, detecção de anomalias OC-SVM e medição empírica de latências e consumo.</p>
+        <p>Adaptive predictive maintenance and concept drift detection system optimized for Edge. Combines Arduino/Raspberry Pi logging, OC-SVM anomaly detection, and empirical latency/power measurements.</p>
         <div class="chips">
           <span class="chip">Python</span><span class="chip">OC-SVM</span>
           <span class="chip">Raspberry Pi</span><span class="chip">Concept Drift</span>
         </div>
-        <a class="card-link" href="https://github.com/whynotsanty/DriftSense-PM" target="_blank" rel="noopener">ver repositório →</a>
+        <a class="card-link" href="https://github.com/whynotsanty/DriftSense-PM" target="_blank" rel="noopener">view repository →</a>
       </div>
 
       <div class="card rev rev-d3">
-        <div class="card-tag">PROJECT // 004 · Redes · Gestão de tráfego</div>
+        <div class="card-tag">PROJECT // 004 · Networks · Traffic Management</div>
         <h3>Road Traffic Management</h3>
-        <p>Sistema adaptativo de gestão de tráfego urbano sobre SNMP/INMF. Micro-simulação, controlo em tempo real (Round-Robin, Backpressure, Q-Learning) e hardening criptográfico com Fernet.</p>
+        <p>Adaptive urban traffic management system over SNMP/INMF. Micro-simulation, real-time control (Round-Robin, Backpressure, Q-Learning) and cryptographic hardening using Fernet.</p>
         <div class="chips">
           <span class="chip">Python</span><span class="chip">SNMP</span>
           <span class="chip">Q-Learning</span><span class="chip">Cryptography</span>
         </div>
-        <a class="card-link" href="https://github.com/whynotsanty/Road-Traffic-Management" target="_blank" rel="noopener">ver repositório →</a>
+        <a class="card-link" href="https://github.com/whynotsanty/Road-Traffic-Management" target="_blank" rel="noopener">view repository →</a>
       </div>
 
       <div class="card rev">
-        <div class="card-tag">PROJECT // 005 · Redes · QoS / VNF</div>
+        <div class="card-tag">PROJECT // 005 · Networks · QoS / VNF</div>
         <h3>QoS-VNF Architecture</h3>
-        <p>Arquitectura modular de QoS com VNFs: controlo de acesso, classificação de tráfego, policing, scheduling e monitorização — tudo deployado numa rede virtualizada.</p>
+        <p>Modular QoS architecture with VNFs: access control, traffic classification, policing, scheduling, and monitoring — all deployed in a virtualized network environment.</p>
         <div class="chips">
           <span class="chip">Shell</span><span class="chip">VNF</span>
-          <span class="chip">QoS</span><span class="chip">Virtualização</span>
+          <span class="chip">QoS</span><span class="chip">Virtualization</span>
         </div>
-        <a class="card-link" href="https://github.com/whynotsanty/QoS-VNF-Architecture" target="_blank" rel="noopener">ver repositório →</a>
-      </div>
-
-      <div class="card rev rev-d1">
-        <div class="card-tag">PROJECT // 006 · V2X · Co-simulação</div>
-        <h3>V2X Traffic Management</h3>
-        <p>Arquitectura de controlo cooperativo baseada em comunicações V2X (ITS-G5) para mitigação de congestionamento em zonas de obras. Validado em co-simulação com Eclipse MOSAIC e SUMO.</p>
-        <div class="chips">
-          <span class="chip">Java</span><span class="chip">V2X / ITS-G5</span>
-          <span class="chip">MOSAIC</span><span class="chip">SUMO</span>
-        </div>
-        <a class="card-link" href="https://github.com/whynotsanty/V2X-Traffic-Management" target="_blank" rel="noopener">ver repositório →</a>
+        <a class="card-link" href="https://github.com/whynotsanty/QoS-VNF-Architecture" target="_blank" rel="noopener">view repository →</a>
       </div>
 
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="section-label rev"><span class="num">—</span><span class="title">Technical Skills</span><span class="line"></span></div>
-    <div class="sk-grid rev">
-      <div class="sk-key">languages</div>
-      <div class="sk-val"><span>Python</span><span>C</span><span>C++</span><span>Java</span><span>JavaScript</span><span>YAML</span></div>
-
-      <div class="sk-key">ml &amp; data</div>
-      <div class="sk-val"><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Plotly</span></div>
-
-      <div class="sk-key">networks</div>
-      <div class="sk-val"><span>SNMP</span><span>V2X / ITS-G5</span><span>QoS / VNF</span><span>Cisco</span><span>Wireshark</span><span>P4 / SDN</span></div>
-
-      <div class="sk-key">iot &amp; edge</div>
-      <div class="sk-val"><span>Arduino</span><span>Raspberry Pi</span><span>MQTT</span><span>BLE</span><span>Edge inference</span></div>
-
-      <div class="sk-key">devops</div>
-      <div class="sk-val"><span>Docker</span><span>Kubernetes</span><span>Terraform</span><span>Ansible</span><span>Prometheus</span><span>Grafana</span><span>Git</span></div>
-
-      <div class="sk-key">databases</div>
-      <div class="sk-val"><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span></div>
-
-      <div class="sk-key">web</div>
-      <div class="sk-val"><span>React</span><span>FastAPI</span><span>Flask</span><span>HTML / CSS</span></div>
-
-      <div class="sk-key">os</div>
-      <div class="sk-val"><span>Linux</span></div>
-
-      <div class="sk-key">línguas</div>
-      <div class="sk-val"><span>Português (nativo)</span><span>Inglês (fluente)</span></div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
   <section id="experience">
     <div class="section-label rev"><span class="num">—</span><span class="title">Education &amp; Experience</span><span class="line"></span></div>
     <div class="tl rev">
 
       <div class="tl-item">
-        <div class="when">2024 – PRESENTE</div>
-        <h3>MSc em Engenharia Informática</h3>
-        <div class="org">Universidade do Minho</div>
+        <div class="when">2024 – PRESENT</div>
+        <h3>MSc in Informatics Engineering</h3>
+        <div class="org">University of Minho</div>
         <ul>
-          <li>Especialização em Machine Learning, Redes e IoT.</li>
-          <li>Projecto de investigação focado em pipelines end-to-end para sistemas embebidos e tráfego urbano.</li>
+          <li>Specialization in Machine Learning, Networks, and IoT.</li>
+          <li>Research project focused on end-to-end pipelines for embedded systems and urban traffic.</li>
         </ul>
       </div>
 
       <div class="tl-item">
         <div class="when">2021 – 2024</div>
-        <h3>Licenciatura em Engenharia Informática</h3>
-        <div class="org">Universidade do Minho</div>
+        <h3>BSc in Informatics Engineering</h3>
+        <div class="org">University of Minho</div>
         <ul>
-          <li>Base sólida em sistemas, redes, algoritmos e desenvolvimento de software.</li>
-          <li>Projectos práticos em simulação de tráfego, IoT e sistemas distribuídos.</li>
+          <li>Solid foundation in systems, networks, algorithms, and software development.</li>
+          <li>Practical projects in traffic simulation, IoT, and distributed systems.</li>
         </ul>
       </div>
 
@@ -485,19 +362,14 @@ footer .credit{font-family:var(--mono);font-size:11px;color:var(--dim)}
 
 </div>
 
-<!-- CONTACT / FOOTER -->
-<footer id="contact">
+<footer>
   <div class="wrap">
-    <div class="contact-section rev">
-      <div class="hero-tag" style="justify-content:center">Vamos trabalhar juntos</div>
-      <h2>Entra em <em>contacto</em></h2>
-      <p>Aberto a oportunidades de investigação, estágios e colaborações em ML, Redes e IoT.</p>
-      <div class="contact-links">
-        <a class="btn primary" href="https://www.linkedin.com/in/goncalosantiago" target="_blank" rel="noopener">LinkedIn →</a>
-        <a class="btn" href="https://github.com/whynotsanty" target="_blank" rel="noopener">GitHub</a>
-      </div>
+    <div class="footer-links">
+      <a href="mailto:your.email@example.com" class="footer-chip email">your.email@example.com</a>
+      <a href="https://www.linkedin.com/in/goncalosantiago" class="footer-chip nav">LinkedIn</a>
+      <a href="https://github.com/whynotsanty" class="footer-chip nav">GitHub</a>
     </div>
-    <p class="credit">// designed &amp; built by Gonçalo Santiago Ferreira · 2026</p>
+    <p class="footer-credit">// designed &amp; built by Gonçalo Santiago Ferreira · 2026</p>
   </div>
 </footer>
 
